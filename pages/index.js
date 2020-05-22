@@ -4,10 +4,11 @@ import moon from '../lib/moon';
 import BN from 'bignumber.js';
 
 export default function Home() {
-  const [moonState, setMoonState] = useState(() => moon.getState());
-
-  const [currentPhase, setCurrentPhase] = useState(BN(0));
-  const [daysSinceNew, setDaysSinceNew] = useState(BN(0));
+  // const [moonState, setMoonState] = useState(() => moon.getState());
+  const [moonState, setMoonState] = useState({
+    currentPhase: BN(0),
+    daysSinceNew: BN(0),
+  });
 
   useEffect(() => {
 
@@ -18,19 +19,7 @@ export default function Home() {
 
   }, []);
 
-  useEffect(() => {
-
-    const update = () => {
-      setCurrentPhase(c => BN(c).plus(1));
-      setDaysSinceNew(c => BN(c).plus(1));
-    }
-    const id = setInterval(update, 500);
-
-    return () => clearInterval(id);
-
-  }, []);
-
-  // const { currentPhase, daysSinceNew } = moonState;
+  const { currentPhase, daysSinceNew } = moonState;
 
   const quarters = [
     currentPhase > 3,
