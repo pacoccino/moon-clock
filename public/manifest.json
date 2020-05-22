@@ -1,6 +1,6 @@
 {
   "name": "Moon Clock",
-  "short_name": "moonclock",
+  "short_name": "Moon Clock",
   "theme_color": "#8679af",
   "background_color": "#dddddd",
   "display": "standalone",

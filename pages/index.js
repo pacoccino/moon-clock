@@ -15,16 +15,19 @@ export default function Home() {
 
   }, []);
 
+  // Debug stuff
+  // const [a,b] = useState(0);
+  // useEffect(() => {
+  //   setInterval(() => {
+  //     b(aa => ((aa+1)%8));
+  //   }, 1000)
+  // }, []);
+  // const currentPhase = BN(a);
+  // const { daysSinceNew } = moonState;
+
   const { currentPhase, daysSinceNew } = moonState;
 
-  const quarters = [
-    currentPhase > 3,
-    currentPhase > 2 && currentPhase < 7,
-    currentPhase > 1 && currentPhase < 6,
-    currentPhase > 0 && currentPhase < 5,
-  ];
-
-  console.log(currentPhase.toFixed(), daysSinceNew.toFixed(), quarters);
+  console.log(currentPhase.toFixed(), daysSinceNew.toFixed());
 
   return (
     <div className="container">
@@ -48,10 +51,18 @@ export default function Home() {
 
       <main>
         <div className="moon-container">
-          <div className={'moon-quarter ' + (quarters[0] && 'moon-quarter-light')}/>
-          <div className={'moon-quarter ' + (quarters[1] && 'moon-quarter-light')}/>
-          <div className={'moon-quarter ' + (quarters[2] && 'moon-quarter-light')}/>
-          <div className={'moon-quarter ' + (quarters[3] && 'moon-quarter-light')}/>
+          <svg width="100%" height="100%" viewBox="0 0 100 100">
+            <image
+              href="images/moon_full.png"
+              x="0" y="0" height="100" width="100"
+            />
+            <image
+              href="images/moon_full_black.png"
+              x="0" y="0" height="100" width="100"
+              opacity={0.9}
+              mask={`url(#mask-shape-${currentPhase})`}
+            />
+          </svg>
         </div>
         <p className="days-info">Days since new moon: {daysSinceNew.integerValue(BN.ROUND_FLOOR).toFixed()}</p>
       </main>
@@ -71,30 +82,23 @@ export default function Home() {
            flex-direction: column;
           justify-content: center;
           align-items: center;
-          background-color: #222444;
+          background-color: #20212d;
           width: 100%;
         }
         
         .moon-container {
-          padding: 5rem 0;
-          display: flex;
-          flex-direction: row;
-          justify-content: center;
-          align-items: center;
-          width: 50%;
-          max-width: 800px;
+          margin: 5rem 0;
+          width: 70%;
+          max-width: 400px;
+          position: relative;
+        }
+        .moon-container:after {
+          content: "";
+          display: block;
+          padding-bottom: 100%;
+          position: absolute;
         }
 
-        .moon-quarter {
-          width: 50px;
-          height: 100px;
-          margin: 10px;
-          background-color: black;
-        }
-        .moon-quarter-light {
-          background-color: white;
-        }
-        
         .days-info {
           color: white;
         }
@@ -114,6 +118,46 @@ export default function Home() {
           box-sizing: border-box;
         }
       `}</style>
+
+      <svg width={0} height={0}>
+        <defs>
+          <mask id="mask-shape-0">
+            <rect fill="white" x="0" y="0" width="1" height="1" />
+          </mask>
+          <mask id="mask-shape-1">
+            <rect    fill="black" x="0" y="0" width="1" height="1" />
+            <rect    fill="white" x="0" y="0" width="0.5" height="1" />
+            <ellipse fill="white" cx="0.5" cy="0.5" rx="0.25" ry="0.5"/>
+          </mask>
+          <mask id="mask-shape-2">
+            <rect    fill="black" x="0" y="0" width="1" height="1" />
+            <rect    fill="white" x="0" y="0" width="0.5" height="1" />
+          </mask>
+          <mask id="mask-shape-3">
+            <rect    fill="white" x="0" y="0" width="1" height="1" />
+            <rect    fill="black" x="0.5" y="0" width="0.5" height="1" />
+            <ellipse fill="black" cx="0.5" cy="0.5" rx="0.25" ry="0.5"/>
+          </mask>
+          <mask id="mask-shape-4">
+            <rect    fill="black" x="0" y="0" width="1" height="1" />
+            <rect    fill="white" x="0" y="0" width="0" height="0" />
+          </mask>
+          <mask id="mask-shape-5">
+            <rect    fill="white" x="0" y="0" width="1" height="1" />
+            <rect    fill="black" x="0" y="0" width="0.5" height="1" />
+            <ellipse fill="black" cx="0.5" cy="0.5" rx="0.25" ry="0.5"/>
+          </mask>
+          <mask id="mask-shape-6">
+            <rect    fill="black" x="0" y="0" width="1" height="1" />
+            <rect    fill="white" x="0.5" y="0" width="0.5" height="1" />
+          </mask>
+          <mask id="mask-shape-7">
+            <rect    fill="black" x="0" y="0" width="1" height="1" />
+            <rect    fill="white" x="0.5" y="0" width="0.5" height="1" />
+            <ellipse fill="white" cx="0.5" cy="0.5" rx="0.25" ry="0.5"/>
+          </mask>
+        </defs>
+      </svg>
     </div>
   )
 }
