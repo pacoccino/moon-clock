@@ -6,14 +6,31 @@ import BN from 'bignumber.js';
 export default function Home() {
   const [moonState, setMoonState] = useState(() => moon.getState());
 
+  const [currentPhase, setCurrentPhase] = useState(BN(0));
+  const [daysSinceNew, setDaysSinceNew] = useState(BN(0));
+
   useEffect(() => {
 
     const update = () => setMoonState(moon.getState());
-    setInterval(update, 3000);
+    const id = setInterval(update, 3000);
+
+    return () => clearInterval(id);
 
   }, []);
 
-  const { currentPhase, daysSinceNew } = moonState;
+  useEffect(() => {
+
+    const update = () => {
+      setCurrentPhase(c => BN(c).plus(1));
+      setDaysSinceNew(c => BN(c).plus(1));
+    }
+    const id = setInterval(update, 500);
+
+    return () => clearInterval(id);
+
+  }, []);
+
+  // const { currentPhase, daysSinceNew } = moonState;
 
   const quarters = [
     currentPhase > 3,
