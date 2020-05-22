@@ -61,11 +61,15 @@ export default function Home() {
               href="images/moon_full_black.png"
               x="0" y="0" height="100" width="100"
               opacity={0.8}
-              mask={`url(#mask-shape-${currentPhase})`}
+              mask={`url(#mask-shape-${currentPhase.toFixed()})`}
             />
           </svg>
         </div>
-        <p className="days-info">Days since new moon: {daysSinceNew.integerValue(BN.ROUND_FLOOR).toFixed()}</p>
+        <p className="days-info">
+          Current phase: {currentPhase.toFixed()}
+          <br/>
+          Days since new moon: {daysSinceNew.integerValue(BN.ROUND_FLOOR).toFixed()}
+        </p>
       </main>
 
       <style jsx>{`
@@ -102,6 +106,7 @@ export default function Home() {
 
         .days-info {
           color: white;
+          text-align: center;
         }
       `}</style>
 
@@ -123,7 +128,7 @@ export default function Home() {
       <svg width={0} height={0}>
         <defs>
           <mask id="mask-shape-0" maskUnits="objectBoundingBox" maskContentUnits="objectBoundingBox">
-            <rect fill="white" x="0" y="0" width="1" height="1" />
+            <rect    fill="white" x="0" y="0" width="1" height="1" />
           </mask>
           <mask id="mask-shape-1" maskUnits="objectBoundingBox" maskContentUnits="objectBoundingBox">
             <rect    fill="black" x="0" y="0" width="1" height="1" />
