@@ -4,11 +4,7 @@ import moon from '../lib/moon';
 import BN from 'bignumber.js';
 
 export default function Home() {
-  // const [moonState, setMoonState] = useState(() => moon.getState());
-  const [moonState, setMoonState] = useState({
-    currentPhase: BN(0),
-    daysSinceNew: BN(0),
-  });
+  const [moonState, setMoonState] = useState(() => moon.getState());
 
   useEffect(() => {
 
