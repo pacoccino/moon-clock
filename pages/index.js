@@ -16,6 +16,7 @@ export default function Home() {
   }, []);
 
   // Debug stuff
+
   // const [a,b] = useState(0);
   // useEffect(() => {
   //   setInterval(() => {
@@ -59,7 +60,7 @@ export default function Home() {
             <image
               href="images/moon_full_black.png"
               x="0" y="0" height="100" width="100"
-              opacity={0.9}
+              opacity={0.8}
               mask={`url(#mask-shape-${currentPhase})`}
             />
           </svg>
@@ -121,37 +122,37 @@ export default function Home() {
 
       <svg width={0} height={0}>
         <defs>
-          <mask id="mask-shape-0">
+          <mask id="mask-shape-0" maskUnits="objectBoundingBox" maskContentUnits="objectBoundingBox">
             <rect fill="white" x="0" y="0" width="1" height="1" />
           </mask>
-          <mask id="mask-shape-1">
+          <mask id="mask-shape-1" maskUnits="objectBoundingBox" maskContentUnits="objectBoundingBox">
             <rect    fill="black" x="0" y="0" width="1" height="1" />
             <rect    fill="white" x="0" y="0" width="0.5" height="1" />
             <ellipse fill="white" cx="0.5" cy="0.5" rx="0.25" ry="0.5"/>
           </mask>
-          <mask id="mask-shape-2">
+          <mask id="mask-shape-2" maskUnits="objectBoundingBox" maskContentUnits="objectBoundingBox">
             <rect    fill="black" x="0" y="0" width="1" height="1" />
             <rect    fill="white" x="0" y="0" width="0.5" height="1" />
           </mask>
-          <mask id="mask-shape-3">
+          <mask id="mask-shape-3" maskUnits="objectBoundingBox" maskContentUnits="objectBoundingBox">
             <rect    fill="white" x="0" y="0" width="1" height="1" />
             <rect    fill="black" x="0.5" y="0" width="0.5" height="1" />
             <ellipse fill="black" cx="0.5" cy="0.5" rx="0.25" ry="0.5"/>
           </mask>
-          <mask id="mask-shape-4">
+          <mask id="mask-shape-4" maskUnits="objectBoundingBox" maskContentUnits="objectBoundingBox">
             <rect    fill="black" x="0" y="0" width="1" height="1" />
             <rect    fill="white" x="0" y="0" width="0" height="0" />
           </mask>
-          <mask id="mask-shape-5">
+          <mask id="mask-shape-5" maskUnits="objectBoundingBox" maskContentUnits="objectBoundingBox">
             <rect    fill="white" x="0" y="0" width="1" height="1" />
             <rect    fill="black" x="0" y="0" width="0.5" height="1" />
             <ellipse fill="black" cx="0.5" cy="0.5" rx="0.25" ry="0.5"/>
           </mask>
-          <mask id="mask-shape-6">
+          <mask id="mask-shape-6" maskUnits="objectBoundingBox" maskContentUnits="objectBoundingBox">
             <rect    fill="black" x="0" y="0" width="1" height="1" />
             <rect    fill="white" x="0.5" y="0" width="0.5" height="1" />
           </mask>
-          <mask id="mask-shape-7">
+          <mask id="mask-shape-7" maskUnits="objectBoundingBox" maskContentUnits="objectBoundingBox">
             <rect    fill="black" x="0" y="0" width="1" height="1" />
             <rect    fill="white" x="0.5" y="0" width="0.5" height="1" />
             <ellipse fill="white" cx="0.5" cy="0.5" rx="0.25" ry="0.5"/>
