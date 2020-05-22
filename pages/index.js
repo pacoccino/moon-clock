@@ -22,6 +22,8 @@ export default function Home() {
     currentPhase > 0 && currentPhase < 5,
   ];
 
+  console.log(currentPhase.toFixed(), daysSinceNew.toFixed(), quarters);
+
   return (
     <div className="container">
       <Head>
