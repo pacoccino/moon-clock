@@ -4,6 +4,7 @@ import BN from 'bignumber.js';
 import moon from './lib/moon';
 
 import './App.css';
+import './stars.css';
 
 function App() {
   const [moonState, setMoonState] = useState(() => moon.getState());
@@ -20,8 +21,13 @@ function App() {
   const { currentPhase, daysSinceNew } = moonState;
 
   return (
-    <div className="container">
-      <main>
+    <div className="app">
+      <div id="stars">
+        <div id='stars1'></div>
+        <div id='stars2'></div>
+        <div id='stars3'></div>
+      </div>
+      <div class="container">
         <div className="moon-container">
           <svg width="100%" height="100%" viewBox="0 0 100 100">
             <image
@@ -41,7 +47,7 @@ function App() {
           <br/>
           Days since new moon: {daysSinceNew.integerValue(BN.ROUND_FLOOR).toFixed()}
         </p>
-      </main>
+      </div>
 
       <svg width={0} height={0}>
         <defs>
