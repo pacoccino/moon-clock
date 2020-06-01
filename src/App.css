@@ -1,0 +1,35 @@
+.container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #1b1c23;
+  width: 100%;
+}
+
+.moon-container {
+  margin: 5rem 0;
+  width: 70%;
+  max-width: 400px;
+  position: relative;
+}
+.moon-container:after {
+  content: "";
+  display: block;
+  padding-bottom: 100%;
+  position: absolute;
+}
+
+.days-info {
+  color: white;
+  text-align: center;
+}
