@@ -1,10 +1,20 @@
 import React, { useEffect, useState } from 'react';
 
-import BN from 'bignumber.js';
 import moon from './lib/moon';
 
 import './App.css';
 import './stars.css';
+
+const phases = [
+  'Nouvelle lune',
+  'Premier croissant',
+  'Premier quartier',
+  'Gibbeuse montante',
+  'Pleine lune',
+  'Gibbeuse descendante',
+  'Dernier quartier',
+  'Dernier croissant',
+];
 
 function App() {
   const [moonState, setMoonState] = useState(() => moon.getState());
@@ -20,6 +30,9 @@ function App() {
 
   const { currentPhase, daysSinceNew } = moonState;
 
+  const phaseN = currentPhase.toNumber();
+  const days = daysSinceNew.dp(1).toNumber();
+
   return (
     <div className="app">
       <div id="stars">
@@ -27,7 +40,7 @@ function App() {
         <div id='stars2'></div>
         <div id='stars3'></div>
       </div>
-      <div class="container">
+      <div className="container">
         <div className="moon-container">
           <svg width="100%" height="100%" viewBox="0 0 100 100">
             <image
@@ -43,9 +56,9 @@ function App() {
           </svg>
         </div>
         <p className="days-info">
-          Current phase: {currentPhase.toFixed()}
+          {phases[phaseN]}
           <br/>
-          Days since new moon: {daysSinceNew.integerValue(BN.ROUND_FLOOR).toFixed()}
+          {days} jours
         </p>
       </div>
 
